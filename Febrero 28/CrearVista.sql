@@ -1,0 +1,1 @@
+create or replace view EmpleadoConEdad as select * from Empleado where edad is not null
