@@ -9,16 +9,17 @@ Una vez que ejecutes el programa se pide rehacerlo con los siguientes cambios:
 ESTÁ PROHIBIDO USAR DBMS_OUTPUT, HAY QUE USAR EL PROCEDIMIENTO PRINT: ESTÁN EN LOS APUNTES
 */
 DECLARE
+    
     type t_registro is table of Alojamiento%rowtype;
     v_registro t_registro;  
-    v_distanciamax pls_integer:= 11;
+    v_distanciamax Alojamiento.distancia%type;
   CURSOR c_Alojamiento IS
-    SELECT *
+    SELECT numaloj,alojamiento
     FROM Alojamiento
     WHERE distancia < v_distanciamax
     order by distancia desc;
     
-  PROCEDURE Print(t_registro IN v_registro) IS
+  PROCEDURE Print(t_registro IN v_registro%type) IS
          v_Index INTEGER;
     BEGIN
          v_Index := t_registro.FIRST;
