@@ -27,14 +27,13 @@ BEGIN
             OPEN C_oficioempleado(v_empleado.numemp);
                 Loop
                
-                    Fetch c_oficioempleado into v_oficioempleado;
+                    Fetch c_oficioempleado into v_oficioempleado;              
                     Exit when c_oficioempleado%notfound;
-                    select o.oficio into v_ooficio from oficio o
-                    where o.numoficio = v_oficioempleado.oficio;
-                    select count(empleado)into v_countempleados from Oficioempleado
-                    where oficio = v_oficioempleado.oficio;
-                    dbms_output.put_line(chr(9)||'Oficio '||v_ooficio||chr(9)||'tiene '|| v_countempleados||' Empleados');
-            
+                        select o.oficio into v_ooficio from oficio o
+                        where o.numoficio = v_oficioempleado.oficio;
+                        select count(empleado)into v_countempleados from Oficioempleado
+                        where oficio = v_oficioempleado.oficio;
+                        dbms_output.put_line(chr(9)||'Oficio '||v_ooficio||chr(9)||'tiene '|| v_countempleados||' Empleados');
                 end loop;            
             CLOSE C_oficioempleado;
          
