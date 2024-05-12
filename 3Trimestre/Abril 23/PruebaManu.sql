@@ -41,12 +41,8 @@ BEGIN
                     Exit when c_oficio%Notfound;
                     dbms_output.put_line(chr(9)*2||v_oficio.oficio);
                 END LOOP;
-            CLOSE c_oficio;
-        
-        
+            CLOSE c_oficio;      
         END LOOP;
-    CLOSE c_empleado;
-    
-    
+    CLOSE c_empleado;   
 END;
 /
