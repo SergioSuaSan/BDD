@@ -9,32 +9,34 @@ declare
     v_boolean boolean;
 begin
 
-    /**/
+    /*
     select * into r_emp from empleado e
     where e.numemp =4;
     r_emp.numemp := seq_Empleado_numemp.nextval;
     PaqueteEmpleado.PEadd(r_emp);
     /**/
     
-    /*
-    r_emp := PaqueteEmpleado.PEget(r_emp.numemp);
+    /**/
+    r_emp := PaqueteEmpleado.PEget(10);
+      dbms_output.put_line(r_emp.numemp);
+    dbms_output.put_line('controlk');
     /**/
     
     /*
     v_boolean :=PaqueteEmpleado.PEset(r_emp);
     if v_boolean then
-        dbms_output.put_line(Conseguido);
+        dbms_output.put_line('Conseguido');
     else
-        dbms_output.put_line(Fallado);
+        dbms_output.put_line('Fallado');
     end if;
     /**/
     
     /*
     v_boolean :=PaqueteEmpleado.PEsdelete(r_emp);
     if v_boolean then
-        dbms_output.put_line(Conseguido);
+        dbms_output.put_line('Conseguido');
     else
-        dbms_output.put_line(Fallado);
+        dbms_output.put_line('Fallado');
     end if;
     /**/
     commit;   

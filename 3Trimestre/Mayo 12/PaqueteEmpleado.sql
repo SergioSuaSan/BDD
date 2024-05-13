@@ -23,9 +23,9 @@ MUY IMPORTANTE: Lo id se deberán intentar ocultar mediante el uso de secuencias
 
 create or replace package PaqueteEmpleado as
     procedure PEadd (p_e in out Empleado%rowtype);
-    function PEget (p_numemp  in out Empleado.numemp%type) return Empleado%rowtype;
-    function PEset (p_e in out Empleado%rowtype) return boolean;
-    function PEdelete (p_e in out  Empleado%rowtype) return boolean;
+    function PEget (p_numemp  in  Empleado.numemp%type) return Empleado%rowtype;
+    function PEset (p_e in  Empleado%rowtype) return boolean;
+    function PEdelete (p_e in   Empleado%rowtype) return boolean;
 end PaqueteEmpleado;
 /
 
@@ -36,7 +36,7 @@ create or replace package body PaqueteEmpleado as
          null;
         end PEadd;
         
-    function PEget (p_numemp in out Empleado.numemp%type) return Empleado%rowtype as
+    function PEget (p_numemp in Empleado.numemp%type) return Empleado%rowtype as
         v_e Empleado%rowtype;
         begin
             select * into v_e from Empleado e
@@ -47,7 +47,7 @@ create or replace package body PaqueteEmpleado as
             return null;
         end PEget;
         
-    function PEset (p_e in out Empleado%rowtype) return boolean as
+    function PEset (p_e in Empleado%rowtype) return boolean as
         begin
             update Empleado e set
                 e.nombre = p_e.nombre,
@@ -57,7 +57,7 @@ create or replace package body PaqueteEmpleado as
             return sql%rowcount = 1;
         end PEset;
     
-     function PEdelete (p_e in out Empleado%rowtype) return boolean as
+     function PEdelete (p_e in Empleado%rowtype) return boolean as
         begin
             update Empleado e set
                 e.activo = 0;
