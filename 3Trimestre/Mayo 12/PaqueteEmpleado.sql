@@ -33,7 +33,7 @@ create or replace package body PaqueteEmpleado as
     
     procedure PEadd (p_e in out Empleado%rowtype) as
         begin
-         null;
+         insert into Empleado e values p_e;
         end PEadd;
         
     function PEget (p_numemp in Empleado.numemp%type) return Empleado%rowtype as
@@ -53,14 +53,16 @@ create or replace package body PaqueteEmpleado as
                 e.nombre = p_e.nombre,
                 e.edad = p_e.edad,
                 e.alojamiento = p_e.alojamiento,
-                e.sueldo = p_e.sueldo;
+                e.sueldo = p_e.sueldo
+                where e.numemp =p_e.numemp;
             return sql%rowcount = 1;
         end PEset;
     
      function PEdelete (p_e in Empleado%rowtype) return boolean as
         begin
             update Empleado e set
-                e.activo = 0;
+                e.activo = 0
+                where e.numemp = p_e.numemp;
             return sql%rowcount = 1;
         end PEdelete;
 end PaqueteEmpleado;

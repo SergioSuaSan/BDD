@@ -1,0 +1,1 @@
+select PaqueteExamen.cuantoTiempo from dual;
