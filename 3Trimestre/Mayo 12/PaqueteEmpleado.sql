@@ -32,8 +32,11 @@ end PaqueteEmpleado;
 create or replace package body PaqueteEmpleado as
     
     procedure PEadd (p_e in out Empleado%rowtype) as
+      v_numemp Empleado.numemp%type := seq_empleado_numemp.nextval;
         begin
-         null;
+            p_e.numemp:= v_numemp;
+            Insert into Empleado
+            values p_e;
         end PEadd;
         
     function PEget (p_numemp in Empleado.numemp%type) return Empleado%rowtype as
