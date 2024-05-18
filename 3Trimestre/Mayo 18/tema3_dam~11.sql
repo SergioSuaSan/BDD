@@ -11,7 +11,7 @@ Declare
         end;
     
 Begin
- --   execute immediate 'create table '|| v_tabla || ' (col1 varchar2(25))';
+    execute immediate 'create table '|| v_tabla || ' (col1 varchar2(25))';
     v_res:= borrarTabla(v_tabla);
     if v_res then
         dbms_output.put_line('conseguido');
